@@ -11,20 +11,22 @@ const PropertyDetailPage = () => {
 
   useEffect(() => {
     if (property) {
-      
       setPropertyData(JSON.parse(property as string));
     } else {
       // Fetch property details using the ID if property data is not passed in the query
       const fetchProperty = async () => {
         try {
-          const response = await axios.get(`https://realty-in-us.p.rapidapi.com/properties/v3/detail`, {
-            params: { property_id: id },
-            headers: {
-              'x-rapidapi-host': 'realty-in-us.p.rapidapi.com',
-              'Content-Type': 'application/json',
-              'x-rapidapi-key': apiKey,
+          const response = await axios.get(
+            `https://realty-in-us.p.rapidapi.com/properties/v3/detail`,
+            {
+              params: { property_id: id },
+              headers: {
+                'x-rapidapi-host': 'realty-in-us.p.rapidapi.com',
+                'Content-Type': 'application/json',
+                'x-rapidapi-key': apiKey,
+              },
             },
-          });
+          );
           setPropertyData(response.data?.data?.home);
         } catch (err) {
           console.error(err);
@@ -35,7 +37,11 @@ const PropertyDetailPage = () => {
     }
   }, [id, property]);
 
-  return propertyData ? <PropertyDetail property={propertyData} /> : <p>Loading...</p>;
+  return propertyData ? (
+    <PropertyDetail property={propertyData} />
+  ) : (
+    <p>Loading...</p>
+  );
 };
 
 export default PropertyDetailPage;

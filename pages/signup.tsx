@@ -11,17 +11,17 @@ export default function Signup() {
   const router = useRouter();
   const signup = () => {
     createUserWithEmailAndPassword(auth, email, password)
-    .then((data)=>{
-        router.push('/signin')
-    })
-    .catch((error)=>{
-        console.error(error.message)
-    })
+      .then((data) => {
+        router.push('/signin');
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
-  
+
   return (
     <>
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
@@ -36,7 +36,10 @@ export default function Signup() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-white"
+              >
                 Email address
               </label>
               <div className="mt-2">
@@ -54,7 +57,10 @@ export default function Signup() {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-white"
+                >
                   Password
                 </label>
               </div>
@@ -72,7 +78,10 @@ export default function Signup() {
             </div>
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-white"
+                >
                   Password Again
                 </label>
               </div>
@@ -91,7 +100,12 @@ export default function Signup() {
 
             <div>
               <button
-                disabled={(!email || !password || !passwordAgain) || (password !== passwordAgain)}
+                disabled={
+                  !email ||
+                  !password ||
+                  !passwordAgain ||
+                  password !== passwordAgain
+                }
                 onClick={() => signup()}
                 className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
@@ -102,5 +116,5 @@ export default function Signup() {
         </div>
       </div>
     </>
-  )
+  );
 }

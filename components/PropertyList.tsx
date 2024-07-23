@@ -12,7 +12,7 @@ const PropertyList = () => {
 
   useEffect(() => {
     const fetchProperties = async () => {
-      setLoading(true)
+      setLoading(true);
       try {
         const response = await axios.post(
           'https://realty-in-us.p.rapidapi.com/properties/v3/list',
@@ -29,9 +29,9 @@ const PropertyList = () => {
               'Content-Type': 'application/json',
               'x-rapidapi-key': apiKey,
             },
-          }
+          },
         );
-        setLoading(false)
+        setLoading(false);
         setProperties(response.data.data.home_search.results);
       } catch (err: ErrorEvent | any) {
         setError(err.message);
@@ -44,9 +44,9 @@ const PropertyList = () => {
   }, [page]);
 
   const handlePropertyClick = (property: any) => {
-    console.log(property)
+    console.log(property);
     router.push({
-      pathname: `/property/${property.property_id}`
+      pathname: `/property/${property.property_id}`,
     });
   };
 
@@ -63,16 +63,33 @@ const PropertyList = () => {
             onClick={() => handlePropertyClick(property)}
           >
             <img
-              src={property.primary_photo ? property.primary_photo.href : 'default_image.jpg'}
+              src={
+                property.primary_photo
+                  ? property.primary_photo.href
+                  : 'default_image.jpg'
+              }
               alt={property.description ? property.description : 'Property'}
               className="w-full h-48 object-cover rounded"
             />
             <h2 className="text-xl font-bold">{property.address?.line}</h2>
-            <p>{property.last_sold_price ? `$${property?.last_sold_price}` : 'Price not available'}</p>
-            <p>{property.location?.address?.city}, {property.location?.address?.state_code} {property.location?.address?.postal_code}</p>
-            <p>{typeof property.branding[0]?.name === 'string' ? property.branding[0]?.name : 'No description available'}</p>
+            <p>
+              {property.last_sold_price
+                ? `$${property?.last_sold_price}`
+                : 'Price not available'}
+            </p>
+            <p>
+              {property.location?.address?.city},{' '}
+              {property.location?.address?.state_code}{' '}
+              {property.location?.address?.postal_code}
+            </p>
+            <p>
+              {typeof property.branding[0]?.name === 'string'
+                ? property.branding[0]?.name
+                : 'No description available'}
+            </p>
             <div>
-              {property.description.beds} Beds | {property.description.baths} Baths | {property.description.sqft} Sq Ft
+              {property.description.beds} Beds | {property.description.baths}{' '}
+              Baths | {property.description.sqft} Sq Ft
             </div>
           </div>
         ))}

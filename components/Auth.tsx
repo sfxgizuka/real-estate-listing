@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User } from 'firebase/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  User,
+} from 'firebase/auth';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +15,11 @@ const Auth = () => {
 
   const handleSignup = async () => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       setUser(userCredential.user);
     } catch (error) {
       console.error(error);
@@ -18,7 +28,11 @@ const Auth = () => {
 
   const handleLogin = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       setUser(userCredential.user);
     } catch (error) {
       console.error(error);

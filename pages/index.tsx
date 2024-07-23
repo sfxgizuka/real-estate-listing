@@ -1,7 +1,7 @@
 'use client';
 import SessionProvider from '@/SessionProvider';
 import PropertyList from '../components/PropertyList';
-import "../styles/globals.css";
+import '../styles/globals.css';
 import { signOut, useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/router';
@@ -22,7 +22,9 @@ const Home = () => {
   }
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-4 underline">Real Estate Listings</h1>
+      <h1 className="text-3xl font-bold mb-4 underline">
+        Real Estate Listings
+      </h1>
       <PropertyList />
     </div>
   );
