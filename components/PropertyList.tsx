@@ -94,17 +94,17 @@ const PropertyList = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-4 space-x-2">
         <button
           onClick={() => setPage(page - 1)}
           disabled={page === 1}
-          className="px-4 py-2 bg-gray-200 rounded"
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
         >
           Previous
         </button>
         <button
           onClick={() => setPage(page + 1)}
-          className="ml-2 px-4 py-2 bg-gray-200 rounded"
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
           Next
         </button>
