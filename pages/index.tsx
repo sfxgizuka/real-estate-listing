@@ -1,7 +1,6 @@
 'use client';
 import SessionProvider from '@/SessionProvider';
 import PropertyList from '../components/PropertyList';
-import '../styles/globals.css';
 import { signOut, useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/router';
